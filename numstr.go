@@ -28,6 +28,8 @@ func LessThanFold(v1, v2 string) bool {
 			}
 			s2, v2 = s2+string(r), v2[n:]
 		}
+		s1 = strings.ToLower(s1)
+		s2 = strings.ToLower(s2)
 		if s1 != s2 {
 			return strings.Compare(s1, s2) < 0
 		}
