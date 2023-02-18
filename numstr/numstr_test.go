@@ -3,7 +3,7 @@ package numstr_test
 import (
 	"fmt"
 
-	"github.com/pschou/go-numstr"
+	"github.com/pschou/go-sorting/numstr"
 )
 
 func ExampleLessThanFold() {
