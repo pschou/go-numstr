@@ -57,9 +57,9 @@ func LessThanFold(v1, v2 string) bool {
 		s2 = strings.TrimPrefix(s2, "0")
 		if s1 != s2 {
 			switch {
-			case len(n1) < len(n2):
+			case len(s1) < len(s2):
 				return true
-			case len(n1) > len(n2):
+			case len(s1) > len(s2):
 				return false
 			}
 			return strings.Compare(s1, s2) < 0
@@ -117,9 +117,9 @@ func LessThan(v1, v2 string) bool {
 		s2 = strings.TrimPrefix(s2, "0")
 		if s1 != s2 {
 			switch {
-			case len(n1) < len(n2):
+			case len(s1) < len(s2):
 				return true
-			case len(n1) > len(n2):
+			case len(s1) > len(s2):
 				return false
 			}
 			return strings.Compare(s1, s2) < 0
