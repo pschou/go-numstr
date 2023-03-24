@@ -1,7 +1,6 @@
 package numstr
 
 import (
-	"strconv"
 	"strings"
 	"unicode/utf8"
 )
@@ -57,9 +56,13 @@ func LessThanFold(v1, v2 string) bool {
 		s1 = strings.TrimPrefix(s1, "0")
 		s2 = strings.TrimPrefix(s2, "0")
 		if s1 != s2 {
-			n1, _ := strconv.Atoi(s1)
-			n2, _ := strconv.Atoi(s2)
-			return n1 < n2
+			switch {
+			case len(n1) < len(n2):
+				return true
+			case len(n1) > len(n2):
+				return false
+			}
+			return strings.Compare(s1, s2) < 0
 		}
 		if v1 == "" || v2 == "" {
 			return v1 == ""
@@ -113,9 +116,13 @@ func LessThan(v1, v2 string) bool {
 		s1 = strings.TrimPrefix(s1, "0")
 		s2 = strings.TrimPrefix(s2, "0")
 		if s1 != s2 {
-			n1, _ := strconv.Atoi(s1)
-			n2, _ := strconv.Atoi(s2)
-			return n1 < n2
+			switch {
+			case len(n1) < len(n2):
+				return true
+			case len(n1) > len(n2):
+				return false
+			}
+			return strings.Compare(s1, s2) < 0
 		}
 		if v1 == "" || v2 == "" {
 			return v1 == ""
