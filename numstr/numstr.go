@@ -32,7 +32,15 @@ func LessThanFold(v1, v2 string) bool {
 		}
 		s1 = strings.ToLower(s1)
 		s2 = strings.ToLower(s2)
+
 		if s1 != s2 {
+			n = len(s1)
+			if n > len(s2) {
+				n = len(s2)
+			}
+			if s1[:n] == s2[:n] {
+				return len(s1) > len(s2)
+			}
 			return strings.Compare(s1, s2) < 0
 		}
 		if v1 == "" || v2 == "" {
@@ -55,6 +63,9 @@ func LessThanFold(v1, v2 string) bool {
 		}
 		s1 = strings.TrimPrefix(s1, "0")
 		s2 = strings.TrimPrefix(s2, "0")
+		if s1 == "" || s2 == "" {
+			return s1 == ""
+		}
 		if s1 != s2 {
 			switch {
 			case len(s1) < len(s2):
@@ -63,9 +74,6 @@ func LessThanFold(v1, v2 string) bool {
 				return false
 			}
 			return strings.Compare(s1, s2) < 0
-		}
-		if v1 == "" || v2 == "" {
-			return v1 == ""
 		}
 		s1, s2 = "", ""
 	}
